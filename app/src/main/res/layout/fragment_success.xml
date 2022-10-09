@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/size_16"
+    tools:context=".ui.main.MainFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_done_196"
+        app:layout_constraintBottom_toTopOf="@+id/tv_account_balance"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_account_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tv_label_conversion_rate"
+        app:layout_constraintTop_toBottomOf="@+id/iv_done"
+        tools:text="Great now you have 178 USD in your account." />
+
+    <TextView
+        android:id="@+id/tv_label_conversion_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tv_conversion_rate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_balance"
+        tools:text="Your conversion rate was:" />
+
+    <TextView
+        android:id="@+id/tv_conversion_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_over"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_conversion_rate"
+        tools:text="1/1.22" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_start_over"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_over"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

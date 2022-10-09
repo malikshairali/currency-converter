@@ -5,16 +5,81 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/size_16"
     tools:context=".ui.main.MainFragment">
 
-    <TextView
-        android:id="@+id/message"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_current_currency"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MainFragment"
+        android:contentDescription="@string/select_current_currency"
+        android:text="@string/gbp"
+        app:icon="@drawable/ic_baseline_arrow_drop_down_24"
+        app:iconGravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_conversion"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_conversion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_8"
+        android:src="@drawable/ic_baseline_compare_arrows_48"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_current_currency"
+        app:layout_constraintEnd_toStartOf="@+id/btn_target_currency"
+        app:layout_constraintStart_toEndOf="@+id/btn_current_currency"
+        app:layout_constraintTop_toTopOf="@+id/btn_current_currency" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_target_currency"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/select_target_currency"
+        android:text="@string/usd"
+        app:icon="@drawable/ic_baseline_arrow_drop_down_24"
+        app:iconGravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_current_currency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_conversion"
+        app:layout_constraintTop_toTopOf="@+id/btn_current_currency" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:textSize="@dimen/text_size_24"
+        app:layout_constraintBottom_toTopOf="@+id/et_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/et_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/_0_0"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_36"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_amount" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_16"
+        android:text="@string/calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_amount"
+        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

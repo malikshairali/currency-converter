@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.currencyconverter.ui.main.MainFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_converterFragment"
+            app:destination="@id/converterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/converterFragment"
+        android:name="com.example.currencyconverter.ui.main.ConvertFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_convert">
+
+        <action
+            android:id="@+id/action_converterFragment_to_approvalDialog"
+            app:destination="@+id/approvalDialog" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/approvalDialog"
+        android:name="com.example.currencyconverter.ui.dialog.ApprovalDialog"
+        tools:layout="@layout/dialog_approval">
+
+        <action
+            android:id="@+id/action_approvalDialog_to_successFragment"
+            app:destination="@+id/successFragment"
+            app:popUpTo="@+id/mainFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.currencyconverter.ui.main.SuccessFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_success">
+
+        <action
+            android:id="@+id/action_successFragment_to_mainFragment"
+            app:destination="@+id/mainFragment"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

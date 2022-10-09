@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/size_16"
+    tools:context=".ui.main.MainFragment">
+
+    <TextView
+        android:id="@+id/tv_current_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_48"
+        app:layout_constraintBottom_toTopOf="@+id/tv_precedes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="150 GBP" />
+
+    <TextView
+        android:id="@+id/tv_precedes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/precedes"
+        android:textSize="@dimen/text_size_24"
+        app:layout_constraintBottom_toTopOf="@+id/tv_target_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_current_value" />
+
+    <TextView
+        android:id="@+id/tv_target_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_precedes"
+        tools:text="178 USD" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_timer_72"
+        app:layout_constraintBottom_toTopOf="@+id/btn_convert"
+        app:layout_constraintEnd_toStartOf="@+id/tv_time_left"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_42"
+        app:layout_constraintBottom_toBottomOf="@id/iv_timer"
+        app:layout_constraintEnd_toEndOf="@id/tv_label_time_left"
+        app:layout_constraintStart_toEndOf="@+id/iv_timer"
+        app:layout_constraintTop_toTopOf="@+id/iv_timer"
+        tools:text="29" />
+
+    <TextView
+        android:id="@+id/tv_label_time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/sec_left"
+        app:layout_constraintBottom_toBottomOf="@id/tv_time_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_time_left" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_convert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/size_16"
+        android:text="@string/convert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_timer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

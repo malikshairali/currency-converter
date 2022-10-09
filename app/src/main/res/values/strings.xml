@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">CurrecncyConverter</string>
+    <string name="app_name">Currency Converter</string>
+
+    <!-- Dialog Approval -->
+    <string name="approval_required">Approval Required</string>
+    <string name="cancel">Cancel</string>
+    <string name="approve">Approve</string>
+
+    <!-- Fragment Convert -->
+    <string name="precedes">precedes</string>
+    <string name="sec_left">sec left</string>
+    <string name="convert">Convert</string>
+
+    <!-- Fragment Main -->
+    <string name="gbp">GBP</string>
+    <string name="select_current_currency">Select Current Currency</string>
+    <string name="usd">USD</string>
+    <string name="select_target_currency">Select Target Currency</string>
+    <string name="amount">Amount:</string>
+    <string name="_0_0">0.0</string>
+    <string name="calculate">Calculate</string>
+
+    <!-- Fragment Success -->
+    <string name="start_over">Start Over</string>
+
+    <string-array name="currencies">
+        <item>USD</item>
+        <item>GBP</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>EUR</item>
+    </string-array>
 </resources>
