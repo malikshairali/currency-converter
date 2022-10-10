@@ -9,9 +9,10 @@
 
     <TextView
         android:id="@+id/tv_current_value"
+        style="@style/Theme.CurrencyConverter.Text.ExtraLarge.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_48"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/tv_precedes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +34,10 @@
 
     <TextView
         android:id="@+id/tv_target_value"
+        style="@style/Theme.CurrencyConverter.Text.ExtraLarge.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_48"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,9 +59,9 @@
 
     <TextView
         android:id="@+id/tv_time_left"
+        style="@style/Theme.CurrencyConverter.Text.ExtraLarge.Bold.Gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_42"
         app:layout_constraintBottom_toBottomOf="@id/iv_timer"
         app:layout_constraintEnd_toEndOf="@id/tv_label_time_left"
         app:layout_constraintStart_toEndOf="@+id/iv_timer"
@@ -72,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/sec_left"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/tv_time_left"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_time_left" />
@@ -82,8 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginVertical="@dimen/size_16"
         android:layout_marginHorizontal="@dimen/size_32"
+        android:layout_marginVertical="@dimen/size_16"
         android:text="@string/convert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_timer" />

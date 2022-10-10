@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text styles start -->
+    <style name="Theme.CurrencyConverter.Text.Large.Bold" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.CurrencyConverter.Text.ExtraLarge.Bold" parent="Theme.CurrencyConverter.Text.Large.Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_48</item>
+    </style>
+
+    <style name="Theme.CurrencyConverter.Text.ExtraLarge.Bold.Gray" parent="Theme.CurrencyConverter.Text.ExtraLarge.Bold">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <!-- Text styles end -->
+
+    <!-- Button styles start -->
+    <style name="Theme.CurrencyConverter.Button.Outlined.Large" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="iconGravity">end</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="iconTint">@color/black</item>
+    </style>
+    <!-- Button styles end -->
+
+</resources>

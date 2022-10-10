@@ -139,7 +139,7 @@ class MainFragment : Fragment() {
             ),
             targetValue = getString(
                 R.string.currency_value,
-                conversionResponse?.conversionResult.toString(),
+                String.format("%.2f", conversionResponse?.conversionResult),
                 btnTargetCurrency.text
             ),
             conversionRate = conversionResponse?.conversionRate.toString(),

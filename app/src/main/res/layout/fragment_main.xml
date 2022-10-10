@@ -10,13 +10,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_current_currency"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Theme.CurrencyConverter.Button.Outlined.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/select_current_currency"
         android:text="@string/gbp"
         app:icon="@drawable/ic_baseline_arrow_drop_down_24"
-        app:iconGravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_conversion"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -37,7 +36,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_target_currency"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Theme.CurrencyConverter.Button.Outlined.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/select_target_currency"
@@ -51,10 +50,11 @@
 
     <TextView
         android:id="@+id/tv_amount"
+        style="@style/Theme.CurrencyConverter.Text.Large.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/amount"
-        android:textSize="@dimen/text_size_24"
+        android:textColor="@color/red_700"
         app:layout_constraintBottom_toTopOf="@+id/et_amount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
