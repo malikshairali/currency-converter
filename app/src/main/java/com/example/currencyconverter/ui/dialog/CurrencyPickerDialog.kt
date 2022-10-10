@@ -48,7 +48,8 @@ class CurrencyPickerDialog : BottomSheetDialogFragment() {
 
     private fun initCurrencyAdapter() {
         currencyPickerAdapter = CurrencyPickerAdapter(
-            resources.getStringArray(R.array.currencies),
+            requireArguments().getStringArray(KEY_CURRENCIES)
+                ?: resources.getStringArray(R.array.currencies),
             requireArguments().getString(KEY_CURRENCY, String())
         )
     }
@@ -56,11 +57,13 @@ class CurrencyPickerDialog : BottomSheetDialogFragment() {
     companion object {
         val TAG: String = CurrencyPickerDialog::class.java.simpleName
         private const val KEY_CURRENCY = "KEY_CURRENCY"
+        private const val KEY_CURRENCIES = "KEY_CURRENCIES"
 
-        fun newInstance(currency: String): CurrencyPickerDialog {
+        fun newInstance(currency: String, currencies: List<String>?): CurrencyPickerDialog {
             return CurrencyPickerDialog().apply {
                 arguments = Bundle().apply {
                     putString(KEY_CURRENCY, currency)
+                    putStringArray(KEY_CURRENCIES, currencies?.toTypedArray())
                 }
             }
         }

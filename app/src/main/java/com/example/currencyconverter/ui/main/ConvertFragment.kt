@@ -51,7 +51,11 @@ class ConvertFragment : Fragment() {
 
     private fun initCountDownTimer() {
         val tvTimeLeft = view?.findViewById<TextView>(R.id.tv_time_left)
-        countDownTimer = object : CountDownTimer(Constants.COUNT_DOWN_TIMER, Constants.COUNT_DOWN_INTERVAL) {
+        countDownTimer = object :
+            CountDownTimer(
+                args.timer,
+                Constants.COUNT_DOWN_INTERVAL
+            ) {
 
             override fun onTick(millisUntilFinished: Long) {
                 tvTimeLeft?.text = (millisUntilFinished / 1000).toString()

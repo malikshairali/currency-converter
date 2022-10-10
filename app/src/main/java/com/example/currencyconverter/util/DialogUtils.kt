@@ -6,9 +6,10 @@ import com.example.currencyconverter.ui.dialog.CurrencyPickerDialog
 object DialogUtils {
     fun showCurrencyPicker(
         fragmentManager: FragmentManager,
-        currency: String
+        currency: String,
+        currencies: List<String>?
     ): CurrencyPickerDialog {
-        val dialog = CurrencyPickerDialog.newInstance(currency)
+        val dialog = CurrencyPickerDialog.newInstance(currency, currencies)
         dialog.show(fragmentManager, CurrencyPickerDialog.TAG)
         return dialog
     }

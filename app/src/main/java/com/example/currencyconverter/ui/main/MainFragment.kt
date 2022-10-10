@@ -18,7 +18,9 @@ import com.example.currencyconverter.data.api.ApiHelper
 import com.example.currencyconverter.data.api.RetrofitBuilder
 import com.example.currencyconverter.data.model.ConversionResponse
 import com.example.currencyconverter.data.network.Status
+import com.example.currencyconverter.manager.FirebaseManager
 import com.example.currencyconverter.ui.base.ViewModelFactory
+import com.example.currencyconverter.util.Constants
 import com.example.currencyconverter.util.DialogUtils
 
 class MainFragment : Fragment() {
@@ -28,6 +30,10 @@ class MainFragment : Fragment() {
     private lateinit var btnCurrentCurrency: Button
     private lateinit var btnTargetCurrency: Button
     private lateinit var etAmount: EditText
+
+    private val firebaseManager = FirebaseManager()
+    private var currencies: List<String>? = null
+    private var timer: Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,6 +46,7 @@ class MainFragment : Fragment() {
 
         setupViewModel()
         setupView(view)
+        initFirebaseListeners()
     }
 
     private fun setupViewModel() {
@@ -57,7 +64,7 @@ class MainFragment : Fragment() {
         btnTargetCurrency = view.findViewById<Button>(R.id.btn_target_currency)
         btnTargetCurrency.setOnClickListener {
             val picker = DialogUtils.showCurrencyPicker(
-                childFragmentManager, btnTargetCurrency.text.toString()
+                childFragmentManager, btnTargetCurrency.text.toString(), currencies
             )
             picker.setOnCurrencyChangeListener { currency ->
                 btnTargetCurrency.text = currency
@@ -67,7 +74,7 @@ class MainFragment : Fragment() {
         btnCurrentCurrency = view.findViewById<Button>(R.id.btn_current_currency)
         btnCurrentCurrency.setOnClickListener {
             val picker = DialogUtils.showCurrencyPicker(
-                childFragmentManager, btnCurrentCurrency.text.toString()
+                childFragmentManager, btnCurrentCurrency.text.toString(), currencies
             )
             picker.setOnCurrencyChangeListener { currency ->
                 btnCurrentCurrency.text = currency
@@ -78,16 +85,21 @@ class MainFragment : Fragment() {
         progressBar = view.findViewById(R.id.progress_bar)
     }
 
+    private fun initFirebaseListeners() {
+        firebaseManager.setOnUpdateCountDownTimerListener { timer ->
+            this.timer = timer
+        }
+        firebaseManager.setOnUpdateCurrenciesListener { currencies ->
+            this.currencies = currencies
+        }
+    }
+
     private fun getConversionRate() {
         val enteredAmount = etAmount.text.toString()
 
         // Check for same currency selection
         if (btnCurrentCurrency.text == btnTargetCurrency.text) {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.error_same_currencies_selected),
-                Toast.LENGTH_LONG
-            ).show()
+            showToast(getString(R.string.error_same_currencies_selected))
             return
         }
 
@@ -110,6 +122,7 @@ class MainFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         setProgressBarVisibility(false)
+                        showToast(resource.message)
                     }
                     Status.LOADING -> {
                         setProgressBarVisibility(true)
@@ -123,16 +136,25 @@ class MainFragment : Fragment() {
         val action = MainFragmentDirections.actionMainFragmentToConverterFragment(
             currentValue = getString(
                 R.string.currency_value, etAmount.text.toString(), btnCurrentCurrency.text
-            ), targetValue = getString(
+            ),
+            targetValue = getString(
                 R.string.currency_value,
                 conversionResponse?.conversionResult.toString(),
                 btnTargetCurrency.text
-            ), conversionRate = conversionResponse?.conversionRate.toString()
+            ),
+            conversionRate = conversionResponse?.conversionRate.toString(),
+            timer ?: Constants.COUNT_DOWN_TIMER
         )
         findNavController().navigate(action)
     }
 
     private fun setProgressBarVisibility(visibility: Boolean) {
         progressBar.isVisible = visibility
+    }
+
+    private fun showToast(message: String?) {
+        Toast.makeText(
+            requireContext(), message, Toast.LENGTH_LONG
+        ).show()
     }
 }

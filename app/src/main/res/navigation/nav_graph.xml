@@ -36,6 +36,10 @@
         <argument
             android:name="conversionRate"
             app:argType="string" />
+
+        <argument
+            android:name="timer"
+            app:argType="long" />
     </fragment>
 
     <dialog
