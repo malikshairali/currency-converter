@@ -8,4 +8,6 @@ object Constants {
     const val COUNT_DOWN_TIMER = 30000L
     // 1s interval
     const val COUNT_DOWN_INTERVAL = 1000L
+    // millis in an hr
+    const val MILLIS_IN_HR = 1000 * 60 * 60
 }

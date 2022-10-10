@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.currencyconverter.MainViewModel
@@ -44,7 +43,7 @@ class MainFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProvider(
-            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService), requireContext())
         )[MainViewModel::class.java]
     }
 
