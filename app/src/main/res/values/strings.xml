@@ -19,9 +19,17 @@
     <string name="amount">Amount:</string>
     <string name="_0_0">0.0</string>
     <string name="calculate">Calculate</string>
+    <string name="currency_value">%1$s %2$s</string>
+    <string name="error">Please enter a valid value</string>
+
+    <!-- Approval Dialog -->
+    <string name="approval_message">You are about to get %1$s for %2$s. Do you approve this transaction?</string>
 
     <!-- Fragment Success -->
     <string name="start_over">Start Over</string>
+    <string name="amount_in_your_account">Great! Now you have %1$s in your account. </string>
+    <string name="your_conversion_rate_was">Your conversion rate was:</string>
+    <string name="conversion_rate">1 / %1$s</string>
 
     <string-array name="currencies">
         <item>USD</item>

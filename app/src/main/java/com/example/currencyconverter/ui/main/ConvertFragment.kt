@@ -5,24 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.currencyconverter.R
 
 class ConvertFragment : Fragment() {
-
-    private lateinit var viewModel: MainViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    private val args: ConvertFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_convert, container, false)
     }
@@ -30,15 +23,25 @@ class ConvertFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initListeners(view)
+        setupViews(view)
     }
 
-    private fun initListeners(view: View) {
+    private fun setupViews(view: View) {
         val btnConvert = view.findViewById<Button>(R.id.btn_convert)
 
         btnConvert?.setOnClickListener {
-            val action = ConvertFragmentDirections.actionConverterFragmentToApprovalDialog()
+            val action = ConvertFragmentDirections.actionConverterFragmentToApprovalDialog(
+                currentValue = args.currentValue,
+                targetValue = args.targetValue,
+                conversionRate = args.conversionRate
+            )
             findNavController().navigate(action)
         }
+
+        val tvCurrentValue = view.findViewById<TextView>(R.id.tv_current_value)
+        tvCurrentValue.text = args.currentValue
+
+        val tvTargetValue = view.findViewById<TextView>(R.id.tv_target_value)
+        tvTargetValue.text = args.targetValue
     }
 }

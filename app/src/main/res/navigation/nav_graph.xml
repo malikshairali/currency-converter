@@ -25,6 +25,17 @@
             android:id="@+id/action_converterFragment_to_approvalDialog"
             app:destination="@+id/approvalDialog" />
 
+        <argument
+            android:name="currentValue"
+            app:argType="string" />
+
+        <argument
+            android:name="targetValue"
+            app:argType="string" />
+
+        <argument
+            android:name="conversionRate"
+            app:argType="string" />
     </fragment>
 
     <dialog
@@ -36,6 +47,18 @@
             android:id="@+id/action_approvalDialog_to_successFragment"
             app:destination="@+id/successFragment"
             app:popUpTo="@+id/mainFragment" />
+
+        <argument
+            android:name="currentValue"
+            app:argType="string" />
+
+        <argument
+            android:name="targetValue"
+            app:argType="string" />
+
+        <argument
+            android:name="conversionRate"
+            app:argType="string" />
     </dialog>
 
     <fragment
@@ -49,6 +72,14 @@
             app:destination="@+id/mainFragment"
             app:popUpTo="@+id/mainFragment"
             app:popUpToInclusive="true" />
+
+        <argument
+            android:name="targetValue"
+            app:argType="string" />
+
+        <argument
+            android:name="conversionRate"
+            app:argType="string" />
     </fragment>
 
 </navigation>

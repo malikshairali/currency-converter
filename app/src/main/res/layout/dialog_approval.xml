@@ -8,14 +8,16 @@
 
     <TextView
         android:id="@+id/tv_approval_required"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:text="@string/approval_required"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/tv_approval_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_16"
@@ -33,7 +35,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_approve"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_approval_message" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_approve"

@@ -1,28 +1,22 @@
 package com.example.currencyconverter.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.currencyconverter.R
 
 class SuccessFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    private val args: SuccessFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_success, container, false)
     }
@@ -40,5 +34,11 @@ class SuccessFragment : Fragment() {
             val action = SuccessFragmentDirections.actionSuccessFragmentToMainFragment()
             findNavController().navigate(action)
         }
+
+        val tvAccountBalance = view.findViewById<TextView>(R.id.tv_account_balance)
+        tvAccountBalance.text = getString(R.string.amount_in_your_account, args.targetValue)
+
+        val tvConversionRate = view.findViewById<TextView>(R.id.tv_conversion_rate)
+        tvConversionRate.text = getString(R.string.conversion_rate, args.conversionRate)
     }
 }
