@@ -15,6 +15,7 @@ import com.example.currencyconverter.util.Constants
 
 class ConvertFragment : Fragment() {
     private val args: ConvertFragmentArgs by navArgs()
+    private var countDownTimer: CountDownTimer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -50,7 +51,7 @@ class ConvertFragment : Fragment() {
 
     private fun initCountDownTimer() {
         val tvTimeLeft = view?.findViewById<TextView>(R.id.tv_time_left)
-        object : CountDownTimer(Constants.COUNT_DOWN_TIMER, Constants.COUNT_DOWN_INTERVAL) {
+        countDownTimer = object : CountDownTimer(Constants.COUNT_DOWN_TIMER, Constants.COUNT_DOWN_INTERVAL) {
 
             override fun onTick(millisUntilFinished: Long) {
                 tvTimeLeft?.text = (millisUntilFinished / 1000).toString()
@@ -60,6 +61,11 @@ class ConvertFragment : Fragment() {
                 startOver()
             }
         }.start()
+    }
+
+    override fun onDetach() {
+        countDownTimer?.cancel()
+        super.onDetach()
     }
 
     private fun startOver() {

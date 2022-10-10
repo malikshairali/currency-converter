@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -79,10 +80,23 @@ class MainFragment : Fragment() {
 
     private fun getConversionRate() {
         val enteredAmount = etAmount.text.toString()
-        if (enteredAmount.isEmpty() || enteredAmount.toDouble() <= 0) {
-            etAmount.error = getString(R.string.error)
+
+        // Check for same currency selection
+        if (btnCurrentCurrency.text == btnTargetCurrency.text) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.error_same_currencies_selected),
+                Toast.LENGTH_LONG
+            ).show()
             return
         }
+
+        // Check for valid entered amount
+        if (enteredAmount.isEmpty() || enteredAmount.toDouble() <= 0) {
+            etAmount.error = getString(R.string.error_invalid_value)
+            return
+        }
+
         viewModel.getConversionRate(
             btnCurrentCurrency.text.toString(),
             btnTargetCurrency.text.toString(),

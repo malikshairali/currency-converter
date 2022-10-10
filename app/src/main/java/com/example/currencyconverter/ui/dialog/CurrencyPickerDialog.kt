@@ -42,6 +42,7 @@ class CurrencyPickerDialog : BottomSheetDialogFragment() {
     private fun initListeners() {
         currencyPickerAdapter.setOnItemClickListener { currency ->
             onCurrencyChangeListener?.invoke(currency)
+            dismiss()
         }
     }
 

@@ -37,6 +37,11 @@ class ApprovalDialog : DialogFragment() {
             findNavController().navigate(action)
         }
 
+        val btnCancel = view.findViewById<Button>(R.id.btn_cancel)
+        btnCancel.setOnClickListener {
+            dismiss()
+        }
+
         val tvApprovalMessage = view.findViewById<TextView>(R.id.tv_approval_message)
         tvApprovalMessage.text =
             getString(R.string.approval_message, args.targetValue, args.currentValue)
